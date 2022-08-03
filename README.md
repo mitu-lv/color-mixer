@@ -1,2 +1,2 @@
-# colors
+# Colors
 Some useful color manipulation
