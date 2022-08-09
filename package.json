@@ -1,0 +1,39 @@
+{
+  "name": "color-mixer",
+  "version": "1.0.0",
+  "description": "Color layering app",
+  "main": "colors.js",
+  "scripts": {
+    "build": "esbuild --bundle src/index.jsx --outfile=build/app.js && cp src/index.html src/style.css build",
+    "dev": "esbuild --bundle src/index.jsx --outfile=build/app.js --watch",
+    "run": "python3 -m http.server --directory build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitu-lv/color-mixer.git"
+  },
+  "keywords": [
+    "color",
+    "colors",
+    "color",
+    "mixer",
+    "color",
+    "tint",
+    "color",
+    "shade"
+  ],
+  "author": "Mikus Lacarus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mitu-lv/color-mixer/issues"
+  },
+  "homepage": "https://github.com/mitu-lv/color-mixer#readme",
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.14.54"
+  }
+}
