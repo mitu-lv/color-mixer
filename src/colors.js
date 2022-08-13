@@ -6,7 +6,7 @@ function round(x, n) {
         : Math.round(x);
 }
 
-function _mixColors(base, added) {
+function mixColors(base, added) {
     const a = round(added.a * maxRgbValue, 2);
     return {
         r: Math.floor((round(round(maxRgbValue - a, 2) * base.r, 2) + round(a * added.r, 2))/maxRgbValue),
@@ -65,11 +65,13 @@ function readColor(str) {
     }
 }
 
-export function mixColors(bgColorValue, fgColorValue) {
-    const fgColor = readColor(fgColorValue);
-    const bgColor = readColor(bgColorValue);
+export function mixLayersOfColors(colorArr) {
+    let startingBackgroundColor = readColor(colorArr[colorArr.length - 1]);
 
-    const resultColor = _mixColors(bgColor, fgColor);
+    while(colorArr.length > 1) {
+        const color = readColor(colorArr.shift());
+        startingBackgroundColor = mixColors(startingBackgroundColor, color);
+    }
 
-    return toHexColor(resultColor);
+    return toHexColor(startingBackgroundColor);
 }
