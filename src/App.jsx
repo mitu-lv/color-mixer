@@ -33,7 +33,7 @@ export function App() {
 
     return (
         <div>
-            <div class="align-transform-colors">
+            <div className="align-transform-colors">
                 <h1>Mix colors by putting transparent colors one on top of the other</h1>
                 <form id="transform-colors" onSubmit={e => handleSubmit(e)}>
                     <button type="button" className="add-button" onClick={addItem}>+</button>
