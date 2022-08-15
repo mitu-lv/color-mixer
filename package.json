@@ -8,7 +8,7 @@
     "dev": "esbuild --bundle src/index.jsx --outfile=build/app.js --watch",
     "run": "python3 -m http.server --directory build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "npm run build && gh-pages -d build -b master -e color-mixer -r git@github.com:mitu-lv/mitu-lv.github.io.git"
+    "deploy": "npm run build && gh-pages -d build -b master -e color-mixer -r git@github.com:mitu-lv/mitu-lv.github.io.git -m \"Deploy color mixer\""
   },
   "repository": {
     "type": "git",
