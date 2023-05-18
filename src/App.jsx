@@ -1,14 +1,18 @@
-import React, {useState} from 'react';
-import {mixLayersOfColors} from './colors';
+import React, {useState, useEffect} from 'react';
+import {mixLayersOfColors, hexToRgba} from './colors';
+
+function getResult(layerOfColors) {
+    const result = mixLayersOfColors([...layerOfColors]);
+        const rgba = hexToRgba(result.substr(1,6));
+        return {hex: result, rgb: `rgb(${rgba.r}, ${rgba.g}, ${rgba.b})`};
+}
 
 export function App() {
     const [layerOfColors, setLayerOfColors] = useState(['rgba(0,0,0,0.1)', '#ffffff'])
-    const [result, setResult] = useState('none');
-
+    const [result, setResult] = useState({hex: 'none', rgb: 'none'});
     const handleSubmit= (e) => {
         e.preventDefault();
-        const result = mixLayersOfColors([...layerOfColors]);
-        setResult(result);
+        setResult(getResult(layerOfColors));
     }
 
     function removeItem(e) {
@@ -30,6 +34,11 @@ export function App() {
         layerOfColors[index] = e.target.value;
         setLayerOfColors([...layerOfColors]);
     }
+
+    useEffect(() => {
+        setResult(getResult(layerOfColors));
+    }, []);
+
 
     return (
         <div>
@@ -53,7 +62,8 @@ export function App() {
                     <button type="submit" className="submit">Create color</button>
                 </form>
                 <div className="row">
-                    <div className="color" style={{backgroundColor: result}}></div><div>{result}</div>
+                    <div className="color" style={{backgroundColor: result.hex}}></div>
+                    <div>{'hex: '}{result.hex}<br/>{'rgb: '}{result.rgb}</div>
                 </div>
             </div>
         </div>

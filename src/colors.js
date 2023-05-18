@@ -7,11 +7,12 @@ function round(x, n) {
 }
 
 function mixColors(base, added) {
-    const a = round(added.a * maxRgbValue, 2);
+    const a = round(added.a * maxRgbValue, 17);
+
     return {
-        r: Math.floor((round(round(maxRgbValue - a, 2) * base.r, 2) + round(a * added.r, 2))/maxRgbValue),
-        g: Math.floor((round(round(maxRgbValue - a, 2) * base.g, 2) + round(a * added.g, 2))/maxRgbValue),
-        b: Math.floor((round(round(maxRgbValue - a, 2) * base.b, 2) + round(a * added.b, 2))/maxRgbValue)
+        r: Math.round((round(round(maxRgbValue - a, 17) * base.r, 17) + round(a * added.r, 17))/maxRgbValue),
+        g: Math.round((round(round(maxRgbValue - a, 17) * base.g, 17) + round(a * added.g, 17))/maxRgbValue),
+        b: Math.round((round(round(maxRgbValue - a, 17) * base.b, 17) + round(a * added.b, 17))/maxRgbValue)
     };
 }
 
@@ -27,7 +28,7 @@ function toHexColor(rgbColor) {
     return '#' + toHex(rgbColor.r) + toHex(rgbColor.g) + toHex(rgbColor.b);
 }
 
-function hexToRgba(hexStr) {
+export function hexToRgba(hexStr) {
     return {
         r: parseInt(hexStr[0] + hexStr[1], 16),
         g: parseInt(hexStr[2] + hexStr[3], 16),
@@ -45,7 +46,7 @@ function toRgba(str) {
         r: rgbArr[0],
         g: rgbArr[1],
         b: rgbArr[2],
-        a: rgbArr[3] ? rgbArr[3] : 1,
+        a: rgbArr[3] === undefined ? 1 : rgbArr[3],
     }
 }
 
